@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+.container{
+    width: 400px;
+    height: 90vh;
+    background: #fff;
+    position: relative;
+}
+
+.header{
+    background-color: #85ADE9;
+    display: grid;
+    place-items: center;
+}
+.header h3{
+    font-family: 'Roboto', sans-serif;
+    font-size: 2.2rem;
+    color: #fff;
+    font-weight: 600;
+    margin: 0.2em 0;
+}
+
+.add-todo{
+    position: absolute;
+    z-index: 10;
+    bottom: 1em;
+    width: 100%;
+    padding: 0 0.6em;
+}
+
+.add-todo input{
+    font-size: 1.5em;
+    border: none;
+    outline: none;
+    border-bottom: 2px solid #85ADE9;
+    width: 100%;
+    padding: 0.2em;
+    color: rgba(0, 0, 0, 0.727);
+}
+
+input::placeholder{
+    color:rgba(0, 0, 0, 0.427);
+}
+
+
+.add-todo button{
+    position: absolute;
+    right: 0.6em;
+    bottom: 0.5em;
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.add-todo button i{
+    font-size: 40px;
+    cursor: pointer;
+    color: #85ADE9;
+}
+.add-todo button i:hover{
+    color: #108DE9;
+}
+
+.add-todo button i:active{
+    color: #85ADE9;
+}
+
+.todos-container{
+    border: 2px solid black;
+    width: calc(100% - 20px);
+    height: calc(100% - 100px);
+    position: relative;
+    top: 25px;
+    margin: 0 auto;
+}
+
+.todos-container ul{
+    list-style: none;
+    border: 2px solid orange;
+}
+
