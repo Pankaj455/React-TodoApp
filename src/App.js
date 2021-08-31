@@ -1,19 +1,19 @@
 import './App.css'
+import { useState } from 'react'
 import Header from './components/Header'
 import AddTodos from './components/AddTodos'
 import Lists from './components/Lists'
 
 function App() {
-
-  function addTodos(e) {
-    e.preventDefault()
-    console.log("submiteed")
+  const [todos, setTodos] = useState([])
+  function addTodos(todo) {
+    setTodos([...todos, todo])
   }
 
   return (
     <div className="container">
       <Header />
-      <Lists />
+      <Lists todos={todos} />
       <AddTodos addTodos={addTodos} />
     </div>
   );

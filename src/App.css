@@ -74,7 +74,7 @@ input::placeholder{
 }
 
 .todos-container{
-    border: 2px solid black;
+    /* border: 2px solid black; */
     width: calc(100% - 20px);
     height: calc(100% - 100px);
     position: relative;
@@ -84,6 +84,42 @@ input::placeholder{
 
 .todos-container ul{
     list-style: none;
-    border: 2px solid orange;
+    /* border: 2px solid orange; */
 }
+
+.todo-item{
+    background-color: #F48926;
+    /* border: 2px solid blue; */
+    border-radius: 8px;
+    margin-bottom: 0.8em;
+    padding: 1em 0.8em;
+    position: relative;
+}
+
+.complete{
+    background-color: #C3E875;
+}
+
+input[type="checkbox"]{
+    /* display: inline-block; */
+    transform: scale(1.5);
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.trash-btn{
+    position: absolute;
+    font-size: 17px;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    padding: 0.1rem 0.4rem;
+    border-radius: 0.05em;
+    border: none;
+    outline: none;
+    background-color: rgba(241, 198, 9, 0.877);
+    color: white;
+}
+
 

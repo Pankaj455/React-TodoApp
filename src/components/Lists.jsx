@@ -1,14 +1,11 @@
 import TodoItem from './TodoItem'
-export default function Lists() {
+export default function Lists({ todos }) {
     return (
         <div className="todos-container">
             <ul>
-                <TodoItem />
-                <TodoItem />
-                <TodoItem />
-                <TodoItem />
-                <TodoItem />
-                <TodoItem />
+                {
+                    todos.map((todo, index) => <TodoItem key={index} todo={todo} />)
+                }
             </ul>
         </div>
     )
