@@ -9,7 +9,7 @@ export default function TodoItem({ todo }) {
                 checked={checked}
                 onChange={() => setChecked(!checked)}
             />
-            <span>{!checked ? todo : <strike>{todo}</strike>}</span>
+            <span className="todo">{!checked ? todo : <strike>{todo}</strike>}</span>
             <button className="trash-btn"><i className="fas fa-trash"></i></button>
         </li>
     )
