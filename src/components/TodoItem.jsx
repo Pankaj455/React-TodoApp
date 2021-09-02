@@ -9,7 +9,7 @@ export default function TodoItem({ todo, removeTodo, id }) {
                 checked={checked}
                 onChange={() => setChecked(!checked)}
             />
-            <span className="todo">{todo}</span>
+            <span className="todo">{todo.task}</span>
             <button className="trash-btn" onClick={() => removeTodo(id)}><i className="fas fa-trash"></i></button>
         </li>
     )

@@ -1,12 +1,12 @@
 import { useState } from "react"
 
 export default function AddTodos({ addTodos }) {
-    const [todo, setTodo] = useState('');
+    const [todo, setTodo] = useState({ task: "", completed: false });
     function handleSubmit(e) {
         e.preventDefault()
-        if (todo.trim() !== "") {
+        if (todo.task.trim() !== "") {
             addTodos(todo)
-            setTodo('')
+            setTodo({ task: "", completed: false })
         }
     }
 
@@ -15,8 +15,8 @@ export default function AddTodos({ addTodos }) {
             <input
                 type="text"
                 placeholder="Add Todo"
-                value={todo}
-                onChange={(e) => setTodo(e.target.value)}
+                value={todo.task}
+                onChange={(e) => setTodo({ ...todo, task: e.target.value })}
             />
             <button ><i className="fas fa-plus-circle"></i></button>
         </form>
