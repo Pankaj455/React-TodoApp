@@ -1,16 +1,36 @@
-import { useState } from "react"
+import { useState, useEffect} from "react"
 
-export default function TodoItem({ todo, removeTodo, id }) {
+export default function TodoItem({ todo, id, setTodos }) {
     const [checked, setChecked] = useState(false)
+    
+    useEffect(()=>{
+        setChecked(todo.completed)
+    }, [todo.completed])
+
+    function markTodo(){
+        setChecked(!checked)
+        const list = JSON.parse(localStorage.getItem('todos'))
+        list[id].completed = !list[id].completed
+        localStorage.setItem('todos', JSON.stringify(list))
+        setTodos(list)
+    }
+
+    function removeTodo(){
+        const list = JSON.parse(localStorage.getItem('todos'))
+        list.splice(id, 1)
+        localStorage.setItem('todos', JSON.stringify(list))
+        setTodos(list)
+    }
+    
     return (
         <li className={`todo-item ${checked && "complete"}`}>
             <input
                 type="checkbox"
                 checked={checked}
-                onChange={() => setChecked(!checked)}
+                onChange={markTodo}
             />
-            <span className="todo">{todo.task}</span>
-            <button className="trash-btn" onClick={() => removeTodo(id)}><i className="fas fa-trash"></i></button>
+            <span className="todo-text">{todo.task}</span>
+            <button className="trash-btn" onClick={removeTodo}><i className="fas fa-trash"></i></button>
         </li>
     )
 }

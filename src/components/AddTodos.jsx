@@ -1,17 +1,25 @@
 import { useState } from "react"
 
-export default function AddTodos({ addTodos }) {
+export default function AddTodos({ setTodos, todos }) {
     const [todo, setTodo] = useState({ task: "", completed: false });
-    function handleSubmit(e) {
+    
+    function addTodo(e) {
         e.preventDefault()
         if (todo.task.trim() !== "") {
-            addTodos(todo)
+            if (localStorage.getItem('todos')) {
+                const list = JSON.parse(localStorage.getItem('todos'))
+                list.push(todo)
+                localStorage.setItem('todos', JSON.stringify(list))
+              } else {
+                localStorage.setItem('todos', JSON.stringify([todo]))
+              }
+            setTodos([...todos, todo])
             setTodo({ task: "", completed: false })
         }
     }
 
     return (
-        <form className="add-todo" onSubmit={handleSubmit}>
+        <form className="add-todo" onSubmit={addTodo}>
             <input
                 type="text"
                 placeholder="Add Todo"
