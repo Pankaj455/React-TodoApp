@@ -1,7 +1,9 @@
-import { useState } from "react"
+import { useState, useContext } from "react"
+import { FilterContext } from '../context/FilterProvider'
 
-export default function Filter({setSelected}) {
+export default function Filter() {
     const [option, setOption] = useState("All")
+    const setSelected = useContext(FilterContext)[1]
 
     function handleChange(e){
         setOption(e.target.value)

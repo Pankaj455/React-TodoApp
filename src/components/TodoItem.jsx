@@ -1,7 +1,9 @@
-import { useState, useEffect} from "react"
+import { useState, useEffect, useContext} from "react"
+import { TodoContext } from "../context/TodoProvider"
 
-export default function TodoItem({ todo, id, setTodos }) {
+export default function TodoItem({ todo, id }) {
     const [checked, setChecked] = useState(false)
+    const setTodos = useContext(TodoContext)[1]
     
     useEffect(()=>{
         setChecked(todo.completed)

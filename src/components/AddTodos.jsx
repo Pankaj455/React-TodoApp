@@ -1,7 +1,9 @@
-import { useState } from "react"
+import { useState, useContext } from "react"
+import { TodoContext } from "../context/TodoProvider";
 
-export default function AddTodos({ setTodos, todos }) {
+export default function AddTodos() {
     const [todo, setTodo] = useState({ task: "", completed: false });
+    const [todos, setTodos] = useContext(TodoContext)
     
     function addTodo(e) {
         e.preventDefault()
