@@ -10,29 +10,22 @@ export default function Lists() {
         <div className="todos-container">
             {
                 todos.length === 0 ?
-                <span className="short-msg">No Tasks To Do...</span>
-                : <ul>
-                    {
-                        selected === "All" ?
-                        todos.map((todo, index) =>{
-                            return <TodoItem key={todo.task} id={index} todo={todo} setTodos={setTodos} />
+                    <span className="short-msg">No Tasks To Do...</span>
+                    : <ul>
+                        {
+                            selected === "All" ?
+                                todos.map((todo, index) => <TodoItem key={todo.task} id={index} todo={todo} setTodos={setTodos} />)
+                                : selected === "Pending" ?
+                                    todos
+                                        .filter(todo => !todo.completed)
+                                        .map(todo => <TodoItem key={todo.task} id={todos.indexOf(todo)} todo={todo} setTodos={setTodos} />)
+                                    : todos
+                                        .filter(todo => todo.completed)
+                                        .map(todo => <TodoItem key={todo.task} id={todos.indexOf(todo)} todo={todo} setTodos={setTodos} />)
                         }
-                        )
-                        : selected === "Pending" ?
-                            todos.filter(todo=>{
-                                return todo.completed === false
-                            }).map(todo=>
-                                <TodoItem key={todo.task} id={todos.indexOf(todo)} todo={todo} setTodos={setTodos} />
-                            )
-                        : todos.filter(todo=>{
-                                return todo.completed
-                            }).map(todo=>
-                                <TodoItem key={todo.task} id={todos.indexOf(todo)} todo={todo} setTodos={setTodos} />
-                            )
-                    }
-                </ul>
+                    </ul>
             }
-            
+
         </div>
     )
 }
